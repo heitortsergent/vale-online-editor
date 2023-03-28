@@ -1,7 +1,16 @@
+const codeMirrorOptions = {
+    lineNumbers: true, // Enable line numbers
+    lineWrapping: true, // Enable line wrapping
+    mode: 'text/plain', // Set the mode to plain text
+  };
+  
+const textInput = CodeMirror(document.getElementById('text-input'), codeMirrorOptions);
+  
+
 document.getElementById('lint-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const text = document.getElementById('text-input').value;
+    const text = textInput.getValue();
     const option = document.getElementById('lint-options').value;
     
     const response = await fetch('/lint', {
@@ -9,19 +18,39 @@ document.getElementById('lint-form').addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, option }),
     });
-  
-    const lintErrors = await response.json();
-    console.log('lintErrors:');
-    console.log(lintErrors);
-    const lintResultsElement = document.getElementById('lint-results');
+
+    const lintOutput = await response.json();
+    const lintResultsElement = document.getElementById('lint-results').querySelector('tbody');
     lintResultsElement.innerHTML = '';
+
+    if(Object.keys(lintOutput).length === 0) {
+      const noErrorsMessage = document.createElement('p');
+      noErrorsMessage.textContent = 'No errors found!';
+      lintResultsElement.appendChild(noErrorsMessage);
+    } else {
+      Object.values(lintOutput).forEach((fileErrors) => {
+        fileErrors.forEach((error) => {
+            const tableRow = document.createElement('tr');
   
-    if(Array.isArray(lintErrors)) {
-        lintErrors.forEach((error) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = error;
-            lintResultsElement.appendChild(listItem);
-          });
+            const lineCell = document.createElement('td');
+            lineCell.textContent = error.Line;
+            tableRow.appendChild(lineCell);
+  
+            const messageCell = document.createElement('td');
+            messageCell.textContent = error.Message;
+            tableRow.appendChild(messageCell);
+  
+            const severityCell = document.createElement('td');
+            severityCell.textContent = error.Severity;
+            tableRow.appendChild(severityCell);
+  
+            const checkCell = document.createElement('td');
+            checkCell.textContent = error.Check;
+            tableRow.appendChild(checkCell);
+  
+            lintResultsElement.appendChild(tableRow);
+        });
+      });
     }
   });
   

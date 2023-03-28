@@ -5,21 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Linter with Vale</title>
     <link rel="stylesheet" href="style.css">
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css" />
+
+    <!-- CodeMirror JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"></script>
 </head>
 <body>
-    <h1>Text Linter with Vale</h1>
-    <form id="lint-form">
-        <textarea id="text-input" rows="10" cols="50"></textarea>
-        <select id="lint-options">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-        <button type="submit">Lint Text</button>
-    </form>
-    <div id="output">
-        <h2>Lint Results</h2>
-        <ul id="lint-results"></ul>
+    <div class="container">
+        <h1>Text Linter with Vale</h1>
+        <form id="lint-form">
+            <label for="text-input">Paste your text:</label>
+            <div id="text-input"></div>
+            <label for="lint-options">Choose linting option:</label>
+            <select id="lint-options">
+                <option value="microsoft">Microsoft</option>
+                <option value="google">Google</option>
+                <option value="hugo">Hugo</option>
+                <option value="joblint">Joblint</option>
+                <option value="proselint">proselint</option>
+                <option value="readability">Readability</option>
+                <option value="redhat">RedHat</option>
+                <option value="vale">Vale</option>
+                <option value="write-good">write-good</option>
+                <option value="alex">alex</option>
+            </select>
+            <button type="submit">Lint Text</button>
+        </form>
+        <div id="output">
+            <h2>Lint Results</h2>
+            <table id="lint-results">
+                <thead>
+                    <tr>
+                        <th>Line</th>
+                        <th>Message</th>
+                        <th>Severity</th>
+                        <th>Check</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
