@@ -24,9 +24,19 @@ document.getElementById('lint-form').addEventListener('submit', async (e) => {
     lintResultsElement.innerHTML = '';
 
     if(Object.keys(lintOutput).length === 0) {
-      const noErrorsMessage = document.createElement('p');
-      noErrorsMessage.textContent = 'No errors found!';
-      lintResultsElement.appendChild(noErrorsMessage);
+      // const noErrorsMessage = document.createElement('p');
+      // noErrorsMessage.textContent = 'No errors found!';
+      // lintResultsElement.appendChild(noErrorsMessage);
+
+      const errorRow = document.createElement('tr');
+      const noErrorsCell = document.createElement('td');
+
+      noErrorsCell.textContent = 'No errors found!';
+      noErrorsCell.colSpan = 4;
+      noErrorsCell.style.textAlign = 'center';
+
+      errorRow.append(noErrorsCell);
+      lintResultsElement.append(errorRow);
     } else {
       Object.values(lintOutput).forEach((fileErrors) => {
         fileErrors.forEach((error) => {

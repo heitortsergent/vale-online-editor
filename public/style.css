@@ -5,96 +5,104 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  /* padding: 20px; */
+  font-weight: 300;
   line-height: 1.6;
-  background-color: #f4f4f4;
   color: #333;
-  padding: 20px;
+  background-color: #f5f5f5;
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
+  padding: 2rem;
+  /* background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-h1,
-h2 {
-  margin-bottom: 20px;
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+p {
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+#text-input {
+  padding: 0.5rem 0;
+}
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.text-input label {
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.CodeMirror {
   border: 1px solid #ccc;
-  resize: vertical;
-}
-
-select {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: 'Roboto', monospace;
+  background-color: #fff;
+  max-height: 400px;
 }
 
 button {
-  display: inline-block;
-  background-color: #4caf50;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: #333;
   color: #fff;
-  padding: 10px 20px;
-  cursor: pointer;
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  transition-duration: 0.4s;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
-}
-
-#output {
-  margin-top: 20px;
+  background-color: #444;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
-table,
-th,
-td {
+table th,
+table td {
+  padding: 0.5rem;
   border: 1px solid #ccc;
-}
-
-th,
-td {
-  padding: 10px;
   text-align: left;
 }
 
-th {
-  background-color: #f2f2f2;
+table th {
+  font-weight: bold;
+  background-color: #f0f0f0;
 }
 
-.CodeMirror {
-  height: auto;
-  font-family: monospace;
-  border: 1px solid #ccc;
+table tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
 }
 
-#text-input {
-  padding: 10px 0px 10px 0px;
+#lint-options {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem 0.5rem;
+}
+
+#output {
+  padding: 1rem 0;
 }
