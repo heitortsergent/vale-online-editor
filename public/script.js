@@ -1,11 +1,11 @@
 const codeMirrorOptions = {
     lineNumbers: true, // Enable line numbers
     lineWrapping: true, // Enable line wrapping
-    mode: 'text/plain', // Set the mode to plain text
+    mode: 'markdown', // Set the mode to plain text
+    value: "# Example \n\nThis is some example text with a few errors that Vale + Microsoft package would pick up.\n\nThe passive voice should not be used. Also should not should be shouldn't.\n\nThis is a very simple error for using 'very'. And punctuation should be inside quotes.\n\nSelect the Lint Text button to see a list of errors. :)"
   };
   
 const textInput = CodeMirror(document.getElementById('text-input'), codeMirrorOptions);
-  
 
 document.getElementById('lint-form').addEventListener('submit', async (e) => {
     e.preventDefault();
