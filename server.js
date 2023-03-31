@@ -12,6 +12,13 @@ app.use(bodyParser.json());
 app.post("/lint", (req, res) => {
   const { text, option } = req.body;
 
+  const allowedOptions = ['microsoft', 'google', 'hugo', 'joblint', 'proselint', 'readability', 'redhat', 'vale', 'write-good', 'alex'];
+
+  // Check if the received option is one of the allowed options
+  if (!allowedOptions.includes(option)) {
+    return res.status(400).json({ error: 'Invalid option provided' });
+  }
+
   // Save text to a temporary file and run the Vale CLI tool
   const fs = require("fs");
   const tmp = require("tmp");
