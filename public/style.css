@@ -106,3 +106,10 @@ table tbody tr:nth-child(odd) {
 #output {
   padding: 1rem 0;
 }
+
+footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
