@@ -34,7 +34,7 @@ app.post("/lint", (req, res) => {
       }
 
       // Run the Vale CLI tool on the temporary file
-      const valeConfigPath = pathModule.resolve(__dirname, ".vale-" + option + ".ini");
+      const valeConfigPath = pathModule.resolve(__dirname, "vale-config-files/.vale-" + option + ".ini");
       const valeCmd = `vale --output JSON --config '${valeConfigPath}' ${path}`;
       exec(valeCmd, {maxBuffer: 1024 * 1024 * 10}, (err, stdout, stderr) => {
         // Clean up the temporary file
